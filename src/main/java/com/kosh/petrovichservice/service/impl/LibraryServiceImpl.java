@@ -4,6 +4,7 @@ import com.github.petrovich4j.Gender;
 import com.github.petrovich4j.Rule;
 import com.github.petrovich4j.RuleSet;
 import com.kosh.petrovichservice.service.LibraryService;
+import com.kosh.petrovichservice.util.GenderHelper;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
@@ -52,7 +53,7 @@ public class LibraryServiceImpl implements LibraryService {
             ArrayList<String> libTests = (ArrayList<String>) m.get("test");
             ArrayList<String> libMods = (ArrayList<String>) m.get("mods");
 
-            Gender gender = extractGender(libGender);
+            Gender gender = GenderHelper.extractGender(libGender);
             String[] tests = libTests.toArray(new String[0]);
             String[] mods = libMods.toArray(new String[0]);
 
@@ -60,13 +61,4 @@ public class LibraryServiceImpl implements LibraryService {
         }
         return resultExceptions;
     }
-
-    private Gender extractGender(String gender) {
-        if ("androgynous".equals(gender))
-            return Gender.Both;
-        if ("male".equals(gender))
-            return Gender.Male;
-        return Gender.Female;
-    }
-
 }
