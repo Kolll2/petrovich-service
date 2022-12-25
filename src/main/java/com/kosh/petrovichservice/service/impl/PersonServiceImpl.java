@@ -31,4 +31,8 @@ public class PersonServiceImpl implements PersonService {
     public String getDeclination(String name, String nameType, String gender, String caseName) {
         return petrovich.say(name, NameType.valueOf(nameType), Gender.valueOf(gender), Case.valueOf(caseName));
     }
+
+    public void updateDictionaries(){
+        //Stub
+    }
 }
