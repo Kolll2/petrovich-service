@@ -5,17 +5,15 @@ import com.kosh.petrovichservice.service.PersonService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "api/v1/person")
 @Api("Контроллер склонения Имени/Фамилии/Отчества")
+@AllArgsConstructor
 public class PersonController {
     private final PersonService personService;
-
-    public PersonController(PersonService personService) {
-        this.personService = personService;
-    }
 
     @GetMapping
     @ApiOperation(value = "Склоняет переданный переданную строку согласно параметрам",
